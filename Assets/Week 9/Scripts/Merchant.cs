@@ -5,5 +5,8 @@ using UnityEngine.EventSystems;
 
 public class Merchant : Villager
 {
-  
+    public override ChestType CanOpen()
+    {
+        return ChestType.Merchant;
+    }
 }
