@@ -20,11 +20,11 @@ public class CharacterControl : MonoBehaviour
         if(SelectedVillager != null)
         {
             SelectedVillager.Selected(false);
-            //currentSelection.text = "Selected: Nothing";
+            Instance.currentSelection.text = "Selected: Nothing";
         }
         SelectedVillager = villager;
         SelectedVillager.Selected(true);
-        //currentSelection.text = villager.name;
+        Instance.currentSelection.text = "Selected: " + villager.name;
     }
     
 }
