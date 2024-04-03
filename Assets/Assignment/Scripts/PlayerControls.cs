@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerControls : MonoBehaviour
     bool jumping;
     public bool isOnGround = true;
     public float jumppower;
+    public static int sceneNumber;
+    int maxSceneNumber = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +51,24 @@ public class PlayerControls : MonoBehaviour
         {
             isOnGround = true;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("goal"))
+        {
+            StartCoroutine(sceneChange());
+        }
+    }
+
+    IEnumerator sceneChange()
+    {
+        speed = 0;
+        jumppower = 0;
+        //sleep animation or coroutine that plays animation
+        yield return null;
+        sceneNumber = (sceneNumber + 1) % maxSceneNumber;
+        SceneManager.LoadScene(sceneNumber);
     }
 
 }
