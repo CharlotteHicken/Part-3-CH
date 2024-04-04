@@ -6,24 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControls : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public float speed;
-    float movement;
-    bool jumping;
-    public bool isOnGround = true;
-    public float jumppower;
+    protected Rigidbody2D rb;
+    protected float speed;
+    protected float movement;
+    protected bool jumping;
+    protected bool isOnGround = true;
+    protected float jumppower;
     public static int sceneNumber;
     int maxSceneNumber = 3;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         speed = 200;
         jumppower = 30;
     }
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         movement = Input.GetAxis("Horizontal");
 
